@@ -383,4 +383,52 @@ def handle_custom_config(screen, clock):
 
 ```
 
+Física do Simulador de Bungee Jump com Gravidade e Viscosidade
+
+Este projeto utiliza um modelo físico simplificado para simular o movimento de um personagem preso a uma corda de bungee jump. A seguir, descrevemos os principais conceitos físicos e como eles foram implementados no código.
+Conceitos Físicos
+Força Gravitacional
+
+A força gravitacional é responsável por puxar o personagem para baixo e é calculada como:
+Fgravidade=m⋅g
+Fgravidade​=m⋅g
+
+    mm: massa do personagem.
+    gg: aceleração da gravidade do planeta selecionado.
+
+Força Elástica
+
+A corda de bungee jump exerce uma força elástica que tende a restaurar o personagem para a posição inicial. Essa força é descrita pela Lei de Hooke:
+Felaˊstica=−k⋅x
+Felaˊstica​=−k⋅x
+
+    kk: constante de elasticidade da corda.
+    xx: deformação da corda, definida como a diferença entre a posição atual e o comprimento natural da corda.
+
+A força elástica só atua quando o personagem ultrapassa o comprimento natural da corda. Caso contrário, Felaˊstica=0Felaˊstica​=0.
+Força Viscosa
+
+A viscosidade é adicionada ao sistema para simular a resistência ao movimento devido ao ar ou outro fluido. Essa força é proporcional à velocidade do personagem:
+Fviscosa=−b⋅v
+Fviscosa​=−b⋅v
+
+    bb: coeficiente de viscosidade do ambiente.
+    vv: velocidade do personagem.
+
+Força Resultante e Aceleração
+
+A soma das forças determina a aceleração do personagem, conforme a Segunda Lei de Newton:
+Ftotal=Fgravidade+Felaˊstica+Fviscosa
+Ftotal​=Fgravidade​+Felaˊstica​+Fviscosa​
+a=Ftotalm
+a=mFtotal​​
+Atualização de Velocidade e Posição
+
+Com a aceleração calculada, usamos as equações do movimento retilíneo uniformemente variado (MRUV) para atualizar a velocidade e a posição do personagem:
+v=v+a⋅Δt
+v=v+a⋅Δt
+y=y+v⋅Δt
+y=y+v⋅Δt
+
+    ΔtΔt: intervalo de tempo entre atualizações.
 
