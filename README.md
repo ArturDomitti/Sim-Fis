@@ -395,7 +395,7 @@ Fgravidade​ = m⋅g
 
     m: massa do personagem.
     g: aceleração da gravidade do planeta selecionado.
-@@ -400,7 +400,6 @@ Força Elástica
+Força Elástica
 
 A corda de bungee jump exerce uma força elástica que tende a restaurar o personagem para a posição inicial. Essa força é descrita pela Lei de Hooke:
 Felástica = −k⋅x
@@ -403,7 +403,7 @@ Felástica​ = −k⋅x
 
     k: constante de elasticidade da corda.
     x: deformação da corda, definida como a diferença entre a posição atual e o comprimento natural da corda.
-@@ -410,16 +409,15 @@ Força Viscosa
+Força Viscosa
 
 A viscosidade é adicionada ao sistema para simular a resistência ao movimento devido ao ar. Essa força é proporcional à velocidade do personagem:
 Fviscosa = −b⋅v
