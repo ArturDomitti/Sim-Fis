@@ -409,8 +409,6 @@ A viscosidade é adicionada ao sistema para simular a resistência ao movimento 
 Fviscosa = −b⋅v
 Fviscosa​ = −b⋅v
 
-    bb: coeficiente de viscosidade do ambiente.
-    vv: velocidade do personagem.
     b: coeficiente de viscosidade do ambiente.
     v: velocidade do personagem.
 
