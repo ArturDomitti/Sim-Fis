@@ -382,50 +382,59 @@ def handle_custom_config(screen, clock):
     return custom_data, True
 
 ```
+1. Força Gravitacional
 
-Física do Simulador de Bungee Jump com Gravidade e Viscosidade
+A força gravitacional puxa o personagem para baixo:
+Fgravidade=m⋅g
+Fgravidade​=m⋅g
 
-Este projeto utiliza um modelo físico simplificado para simular o movimento de um personagem preso a uma corda de bungee jump. A seguir, descrevemos os principais conceitos físicos e como eles foram implementados no código.
-Conceitos Físicos:
+    mm: massa do personagem.
+    gg: aceleração da gravidade.
 
-Força Gravitacional
+2. Força Elástica (Lei de Hooke)
 
-A força gravitacional é responsável por puxar o personagem para baixo e é calculada como:
-Fgravidade = m⋅g
+Quando a corda é esticada além do seu comprimento natural, ela exerce uma força restauradora:
+Felaˊstica=−k⋅x
+Felaˊstica​=−k⋅x
 
-    m: massa do personagem.
-    g: aceleração da gravidade do planeta selecionado.
+    kk: constante elástica da corda.
+    xx: deformação da corda, que é a diferença entre a posição atual (yy) e a posição inicial mais o comprimento natural da corda (yini+Lyini​+L):
+    x=(y−yini)−L
+    x=(y−yini​)−L
 
-Força Elástica
+3. Força Viscosa
 
-A corda de bungee jump exerce uma força elástica que tende a restaurar o personagem para a posição inicial. Essa força é descrita pela Lei de Hooke:
-Felástica = −k⋅x
+A resistência viscosa é proporcional à velocidade do personagem:
+Fviscosa=−b⋅v
+Fviscosa​=−b⋅v
 
-    k: constante de elasticidade da corda.
-    x: deformação da corda, definida como a diferença entre a posição atual e o comprimento natural da corda.
+    bb: coeficiente de viscosidade.
+    vv: velocidade do personagem.
 
-A força elástica só atua quando o personagem ultrapassa o comprimento natural da corda. Caso contrário, Felástica=0.
-Força Viscosa
+4. Força Resultante
 
-A viscosidade é adicionada ao sistema para simular a resistência ao movimento devido ao ar. Essa força é proporcional à velocidade do personagem:
-Fviscosa = −b⋅v
+A força total no personagem é a soma das forças:
+Ftotal=Fgravidade+Felaˊstica+Fviscosa
+Ftotal​=Fgravidade​+Felaˊstica​+Fviscosa​
+5. Aceleração (Segunda Lei de Newton)
 
+Com a força total, calculamos a aceleração usando a segunda lei de Newton:
+a=Ftotalm
+a=mFtotal​​
+6. Atualização de Velocidade e Posição
 
-    b: coeficiente de viscosidade do ambiente.
-    v: velocidade do personagem.
+Usamos as equações do movimento retilíneo uniformemente variado (MRUV) para calcular a nova velocidade e posição do personagem em pequenos intervalos de tempo (ΔtΔt):
 
-Força Resultante e Aceleração
+    Velocidade:
+    v=v+a⋅Δt
+    v=v+a⋅Δt
+    Posição:
+    y=y+v⋅Δt
+    y=y+v⋅Δt
 
-A soma das forças determina a aceleração do personagem, conforme a Segunda Lei de Newton:
-Ftotal = Fgravidade + Felástica + Fviscosa
-a = Ftotal / m
-​​
-Atualização de Velocidade e Posição
+7. Condições de Contato
 
-Com a aceleração calculada, usamos as equações do movimento retilíneo uniformemente variado (MRUV) para atualizar a velocidade e a posição do personagem:
-v = v + a⋅Δt
-y = y + v⋅Δt
-
-
-    Δt: intervalo de tempo entre atualizações.
+Se a deformação da corda (xx) for menor ou igual a zero, a força elástica não atua:
+Felaˊstica=0,se x≤0
+Felaˊstica​=0,se x≤0
 
