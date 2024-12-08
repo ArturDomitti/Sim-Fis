@@ -1,6 +1,50 @@
-# Simulação trabalho de física
+# Simulador de Bungee Jump 
+### Descrição do Projeto
+Esse projeto é um jogo criado para representar fenômenos específicos da física, com o objetivo de demonstrar de forma interativa e divertida os conceitos de queda livre em um Bungee Jump (Bungee jumping é um esporte radical praticado por muitos aventureiros corajosos, que consiste em saltar de uma altura num vazio, amarrado aos tornozelos ou cintura a uma corda elástica),os conteiros trabalhados são gravidade e viscosidade, e elasticidade. O jogo permite que o jogador selecione um planeta, cada um com níveis de gravidades diferentes, e observar como o personagem cai de uma queda livre amarrado em uma corda, com isso ele pode observar como a força elástica interage com o corpo. Também é possível personalizar a simulação escolhendo a massa do objeto, a força gravitacional do planeta personalizado e a Viscocidade do movimento que neste caso a viscosidade simula a resistência do ar no sistema
+#### Escolha dos planetas e personalização dos planetas
+[FOTO DA ESCOLHA DE PLANETAS E PERSONALIZAÇÃO]
+#### Animação do personagem no Bungee Jump no planeta selecionado:
+[ANIMAÇÃO DO PERSONAGEM CAINDO EM QUALQUER PLANETA]
+### Conceitos de Física e Modelo
+Este projeto utiliza um modelo físico simplificado para simular o movimento de um personagem preso a uma corda de bungee jump. A seguir, descrevemos os principais conceitos físicos e como eles foram implementados no código.
+### Conceitos Físicos
+#### Força Gravitacional
+A simulação começa com a Força Gravitacional agindo no começo ela funciona como uma queda livre,A queda livre como o movimento quando algum objeto é solto ou abandonado do repouso (velocidade inicial igual a zero) a partir de uma certa altura em relação ao solo, em uma região onde haja aceleração gravitacional.
 
-### ALUNOS
+    m: massa do personagem.
+    g: aceleração da gravidade do planeta selecionado.
+#### Força Viscosa
+Logo após a Força Viscosa age na simulação, ela  funciona para simular a resistencia do ar no sistema. Essa força é proporcional à velocidade do personagem: 
+Fviscosa = −b⋅v 
+
+    b: coeficiente de viscosidade do ambiente.
+    v: velocidade do personagem.
+#### Força Elástica
+A corda de bungee jump exerce uma força elástica que tende a restaurar o personagem para a posição inicial,
+Essa força é descrita pela Lei de Hooke: Felástica = −k⋅x
+
+    k: constante de elasticidade da corda.
+    x: deformação da corda, definida como a diferença entre a posição atual e o comprimento natural da corda.
+
+
+#### Personagem atinge sua altura mínima
+Quando a força elástica atinge seu máximo o objeto começa o movimento contra a aceleração de gravidade e a mesma começa a agir como força dissipativa junto com a força viscosa.
+Até o momento em que as forças dissipativas zeram o movimento e o movimento volta para o estado inicial da simulação de Queda livre.
+
+#### Força Resultante e Aceleração
+
+A soma das forças determina a aceleração do personagem, conforme a Segunda Lei de Newton:
+
+Ftotal = Fgravidade + Felástica + Fviscosa
+
+Ftotal​ = Fgravidade​ + Felástica​ + Fviscosa​
+
+a = Ftotal / massa
+
+Atualização de Velocidade e Posição
+
+### Informações sobre os autores: 
+### Alunos
 |        Nome                         |    NUSP   |       
 |:-----------------------------------:|:---------:|  
 |   Artur Domitti Camargo             |  15441661 |   
@@ -8,8 +52,9 @@
 |   Lucas Alves da Silva		         |  11819553  |
 |   Renato Calacina Spessotto           |  14605824 |   
 
-Fizemos a simulação de bungee jump em vários planetas, incluindo uma opção personalizada.
-O bungee jump e uma simulação de um sistema massa mola.
+Essa simulação foi feita como parte do processo avaliativo da disciplina 7600105 - Física Básica I (2024) da USP-São Carlos ministrada pela Prof. Krissia de Zawadzki e pelo Prof. Esmerindo de Sousa Bernardes.
+
+
 
 código da main 
 ```
@@ -382,41 +427,5 @@ def handle_custom_config(screen, clock):
     return custom_data, True
 
 ```
-Física do Simulador de Bungee Jump com Gravidade e Viscosidade
 
-Este projeto utiliza um modelo físico simplificado para simular o movimento de um personagem preso a uma corda de bungee jump. A seguir, descrevemos os principais conceitos físicos e como eles foram implementados no código.
-Conceitos Físicos
-Conceitos Físicos:
-Força Gravitacional
 
-A força gravitacional é responsável por puxar o personagem para baixo e é calculada como:
-Fgravidade = m⋅g
-Fgravidade​ = m⋅g
-
-    m: massa do personagem.
-    g: aceleração da gravidade do planeta selecionado.
-Força Elástica
-
-A corda de bungee jump exerce uma força elástica que tende a restaurar o personagem para a posição inicial. Essa força é descrita pela Lei de Hooke:
-Felástica = −k⋅x
-Felástica​ = −k⋅x
-
-    k: constante de elasticidade da corda.
-    x: deformação da corda, definida como a diferença entre a posição atual e o comprimento natural da corda.
-Força Viscosa
-
-A viscosidade é adicionada ao sistema para simular a resistência ao movimento devido ao ar. Essa força é proporcional à velocidade do personagem:
-Fviscosa = −b⋅v
-Fviscosa​ = −b⋅v
-
-    b: coeficiente de viscosidade do ambiente.
-    v: velocidade do personagem.
-
-Força Resultante e Aceleração
-
-A soma das forças determina a aceleração do personagem, conforme a Segunda Lei de Newton:
-Ftotal = Fgravidade + Felástica + Fviscosa
-Ftotal​ = Fgravidade​ + Felástica​ + Fviscosa​
-a = Ftotal / m
-​​
-Atualização de Velocidade e Posiçã
